@@ -1,0 +1,145 @@
+{
+  "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "2sjsqze78zanq"
+  },
+  "info": {
+    "title": "card",
+    "version": "1.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "description": "",
+      "url": "http://cntt-ho-01c5:7800/api/v1"
+    }
+  ],
+  "paths": {
+    "/card/{cardId}/limit": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cardId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CardLimitForCustomerResponse"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "$ref": "#/components/responses/CardBaseResponse-404-500"
+          }
+        },
+        "operationId": "get-card-cardId-limit",
+        "description": "lay danh sach thong limit the theo ma the",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "x-fapi-interaction-id"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CardLimitForCustomerData": {
+        "title": "CardLimitForCustomerData",
+        "x-stoplight": {
+          "id": "3kxfhn02g95d0"
+        },
+        "type": "object",
+        "properties": {
+          "limitId": {
+            "type": "string"
+          },
+          "limitValue": {
+            "type": "string"
+          },
+          "limitCurrency": {
+            "type": "string"
+          },
+          "limitDesc": {
+            "type": "string"
+          }
+        }
+      },
+      "CardLimitForCustomerDataResponse": {
+        "title": "CardLimitForCustomerDataResponse",
+        "x-stoplight": {
+          "id": "rsvb0vccgnmds"
+        },
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CardLimitForCustomerData"
+            }
+          }
+        }
+      },
+      "BaseResponse-404-500": {
+        "title": "BaseResponse-404-500",
+        "x-stoplight": {
+          "id": "bx7mf560lu93s"
+        },
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {},
+    "parameters": {},
+    "responses": {
+      "CardLimitForCustomerResponse": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CardLimitForCustomerDataResponse"
+            }
+          }
+        }
+      },
+      "CardBaseResponse-404-500": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BaseResponse-404-500"
+            }
+          }
+        }
+      }
+    }
+  }
+}
